@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>センサからの信号受信</title>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+
+  </head>
+
+  <body>
+  <h1>スマホからのセンサ情報を受信</h1>  
+  <div>
+    <div>あなたのID: <span id="myid"></span></div>
+    <div>ルームID: <span id="room"></span></div>
+    <div>受信した情報はコンソールログで確認してください</div>
+  </div>
+  <script>
+    let room = "s1317148";
+    let socket = io.connect('https://qa.fujimura.com');
+    let myid;
+      
+    document.querySelector("#room").innerHTML = room;
+    socket.on('mylogin', function(data) {
+      myid = data;
+      socket.emit('join', room); // 受信room IDを指定
+      document.querySelector("#myid").innerHTML = myid;
+      console.log("あなたのID: ", myid);
+    });
+            
+    socket.on('sensor', function(data) {
+        //console.log(data.b);
+        //console.log(data.g);
+        parseInt(data.b);
+        parseInt(data.g);
+
+        let b =parseInt(data.b);
+        let g =parseInt(data.g);
+
+        background(200);
+        
+        if(g==90){
+            g=90;
+        }else if(g==-90){
+            g=-90;
+        }
+        
+        if(b>90){
+            b=90;
+        }else if(b<-90){
+            b=-90;
+        }
+
+
+        ellipse(width/2+g,height/2+b,50,50);
+        console.log(g);
+    });
+
+      function setup(){
+          createCanvas(640,480);
+          background(200);
+      }
+
+      S
+    function draw(){
+
+    }
+
+
+  </script>
+  
+  
+</body>
+</html>
