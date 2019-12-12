@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/img_switch.js"></script>
+<title>夏休み</title>
+</head>
+
+<style>
+        body{
+            text-align: center;
+            background: #EAD9FF;
+            color: #663366;
+            font-size:30px;
+            margin:30px;
+            font-family: "cursive""Meiryo UI"
+    }
+</style>
+
+
+
+
+<body>
+
+<h1>大学3年の夏休み</h1>
+<ul>
+<a href="javascript:void(0);" id="menu01">花火大会</a>
+<a href="javascript:void(0);" id="menu02">韓国cafe</a>
+<a href="javascript:void(0);" id="menu03">韓国cafe2</a>
+</ul>
+<hr />
+
+<p id="img_switch"><img src="img/yukata1.jpg" /></p>
+<script>
+    
+    
+    
+$(function(){
+    
+    $("#menu01").click(function(){
+        $("#img_switch img").attr("src", "img/hanabi.JPG");
+    });
+
+    
+    $("#menu02").click(function(){
+        $("#img_switch img").attr("src", "img/cafe.JPG");
+    });
+
+    
+    $("#menu03").click(function(){
+        $("#img_switch img").attr("src", "img/cafe1.JPG");
+    });
+});
+    
+    
+</script>
+</body>
+</html>
